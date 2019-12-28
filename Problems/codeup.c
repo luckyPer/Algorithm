@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <math.h>
+#include <string.h>
 
 #define maxsize 100000
 
@@ -10,7 +12,9 @@ int main(int argc, char const *argv[])
     //printf(" result : %d ", getCallatz(3));
     //setSchoolInfor_B1032(2);
     //drawSquare(10, 'a');
-    printf("%d", getDifference(20181214, 20191214));
+    //printf("%d", getDifference(20181214, 20191214));
+    char p[] = {'1','3','44'};
+  judgePalindromeP111(p, 3);
     system("pause");
     return 0;
 }
@@ -174,7 +178,7 @@ int getDifference(int date1, int date2)
     int m2 = getMonth(date2);
     int y1 = getYear(date1);
     int y2 = getYear(date2);
-    while (d1 < d2 || m1 < m2 || y1 < y2)   //让小的日期的天数自增, 直到等于对应month[m1] 的天数, 在让m1自增, d1置为1; 当m1等于13的时候
+    while (d1 < d2 || m1 < m2 || y1 < y2) //让小的日期的天数自增, 直到等于对应month[m1] 的天数, 在让m1自增, d1置为1; 当m1等于13的时候
     //y1 自增, m1 置为1
     {
         d1++;
@@ -192,4 +196,47 @@ int getDifference(int date1, int date2)
         Difference++;
     }
     return Difference;
+}
+
+/*
+ *@description: D 进制的 A+B
+ *@params1: 
+ *@params2: 
+ *@return: 
+ *@date: 2019-12-28 21:06:00
+*/
+
+void getBase(int num, int base)
+{
+    int *b = (int)malloc(sizeof(int));
+    int temp = 0;
+    int i = 0;
+    do
+    {
+        temp = num % base;
+        num = num / base;
+        b[i++] = temp;
+    } while (num != 0);
+}
+
+
+/*
+ *@description: 回文串
+ *@params1: 
+ *@params2: 
+ *@return: 
+ *@date: 2019-12-28 21:44:22
+*/
+void judgePalindromeP111(char p[], int n)
+{
+    int len = strlen(p);
+    for (int i = 0; i < n/2; i++)
+    {
+        if (p[i] != p[n-1-i])
+        {
+            printf("nnn");
+            return;
+        }      
+    }
+    printf("yyy");
 }
