@@ -13,8 +13,8 @@ int main(int argc, char const *argv[])
     //setSchoolInfor_B1032(2);
     //drawSquare(10, 'a');
     //printf("%d", getDifference(20181214, 20191214));
-    char p[] = {'1','3','44'};
-  judgePalindromeP111(p, 3);
+    char p[] = {'1', '3', '44'};
+    judgePalindromeP111(p, 3);
     system("pause");
     return 0;
 }
@@ -219,7 +219,6 @@ void getBase(int num, int base)
     } while (num != 0);
 }
 
-
 /*
  *@description: 回文串
  *@params1: 
@@ -230,13 +229,13 @@ void getBase(int num, int base)
 void judgePalindromeP111(char p[], int n)
 {
     int len = strlen(p);
-    for (int i = 0; i < n/2; i++)
+    for (int i = 0; i < n / 2; i++)
     {
-        if (p[i] != p[n-1-i])
+        if (p[i] != p[n - 1 - i])
         {
             printf("nnn");
             return;
-        }      
+        }
     }
     printf("yyy");
 }

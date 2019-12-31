@@ -17,10 +17,10 @@ using namespace std;
 */
 struct mooncake
 {
-    double money;//总价
-    double weight;//库存量
-    double price;//单价
-}cake[10];
+    double money;  //总价
+    double weight; //库存量
+    double price;  //单价
+} cake[10];
 
 //按单价排序
 bool comp(mooncake a, mooncake b)
@@ -32,10 +32,10 @@ mooncake *permoneyCake(int count)
 {
     for (int i = 0; i < count; i++)
     {
-        cin >> cake[i].weight  >> cake[i].money;
-        cake[i].price = cake[i].money/cake[i].weight;
+        cin >> cake[i].weight >> cake[i].money;
+        cake[i].price = cake[i].money / cake[i].weight;
     }
-    sort(cake, cake + count, comp);    
+    sort(cake, cake + count, comp);
 
     return cake;
 }
@@ -45,7 +45,7 @@ void getHighBenefit(double demand, int count)
     mooncake *permoney = permoneyCake(count);
     int i = 0;
     double highBenefit = 0.0;
-    while (demand  > 0)
+    while (demand > 0)
     {
         if (permoney[i].weight > demand)
         {
@@ -55,10 +55,10 @@ void getHighBenefit(double demand, int count)
         else
         {
             highBenefit += permoney[i].money;
-            demand -= permoney[i].weight; 
+            demand -= permoney[i].weight;
         }
         i++;
-    }   
+    }
     cout << highBenefit;
 }
 
@@ -78,9 +78,8 @@ void getHighBenefit(double demand, int count)
  *@return: 
  *@date: 2019-12-31 14:02:32
 */
-int num[10] ={
-    2,2,0,0,0,3,0,0,1,0
-};
+int num[10] = {
+    2, 2, 0, 0, 0, 3, 0, 0, 1, 0};
 void getSmallestNum()
 {
     for (int i = 1; i < 10; i++)
@@ -103,7 +102,7 @@ void getSmallestNum()
         {
             cout << i;
             num[i] -= 1;
-        }      
+        }
     }
 }
 
@@ -121,10 +120,10 @@ void getSmallestNum()
 */
 
 #define max 4
-struct  intevel
+struct intevel
 {
-    int x,y; //区间左右端点
-}I[max];
+    int x, y; //区间左右端点
+} I[max];
 
 bool cop(intevel a, intevel b)
 {
@@ -135,9 +134,9 @@ void arrange()
 {
     for (int i = 0; i < max; i++)
     {
-        cin >> I[i].x  >> I[i].y;
+        cin >> I[i].x >> I[i].y;
     }
-    sort(I, I+max, cop);
+    sort(I, I + max, cop);
     int i = 0;
     int last = I[0].y;
     while (i < max)
@@ -145,9 +144,9 @@ void arrange()
         if (I[i].x < last)
         {
             last = I[i].y;
-            cout << "(" << I[i].x << "," << I[i].y <<")\n";
-        }  
-        i++;   
+            cout << "(" << I[i].x << "," << I[i].y << ")\n";
+        }
+        i++;
     }
 }
 
@@ -156,4 +155,3 @@ void arrange()
 //十分相似于前一问, 选择的点为 最早结束的右区间
 
 //贪心 算法: 由局部最优策略来推得全局最优结果,且无后效性
-
