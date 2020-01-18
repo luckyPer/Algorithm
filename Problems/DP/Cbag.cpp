@@ -6,10 +6,10 @@
 using namespace std;
 
 /*
-有4个物品, 最大容量为8
+有4种物品, 最大容量为8
 物体体积: 2, 3, 4, 5
 物体价值: 3, 4, 5, 6
-
+物品都有无穷件, 使得背包内的总价值最大, 但不能超过最大容量
 */
 
 int bag()
@@ -33,9 +33,9 @@ int bag()
     {
         for (int j = 1; j <= v; j++)
         {
-            if (w[i - 1] <= j)
-            { //装的下当前物品
-                dp[i][j] = max(dp[i - 1][j], c[i - 1] + dp[i - 1][j - w[i - 1]]);
+            if (w[i-1] <= j)
+            {   //装的下当前物品       
+                dp[i][j] = max(dp[i-1][j], c[i - 1] + dp[i][j - w[i - 1]]);
             }
             else
             {
@@ -48,36 +48,10 @@ int bag()
     return dp[n][v];
 }
 
-int bag01()
-{
-    int n = 4;
-    int v = 8;
-    vector<int> w({2, 3, 4, 5});
-    vector<int> c({3, 4, 5, 6});
-
-    int dp[v + 1]; //前 i件物品恰好装入容量为v的背包中所能获得的最大价值
-
-    for (int i = 0; i <= v; i++)
-    {
-        dp[i] = 0;
-    }
-
-    //滚动数组 优化
-    for (int i = 1; i <= n; i++)
-    {
-        for (int j = v; j >= w[i - 1]; j--)
-        {
-            dp[j] = max(dp[j], dp[j - w[i - 1]] + c[i - 1]);
-        }
-    }
-
-    sort(dp, dp + v + 1);
-    return dp[v];
-}
 int main(int argc, char const *argv[])
 {
 
-    cout << bag01();
+    cout << bag();
     system("pause");
     return 0;
 }
