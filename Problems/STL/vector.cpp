@@ -5,7 +5,7 @@
 
 using namespace std;
 
-vector<int> vi;  //变长一维数组
+vector<int> vi; //变长一维数组
 /*
     1)下标访问
         vi[0];
@@ -38,7 +38,11 @@ vector<int> vi;  //变长一维数组
 
 */
 
-vector<vector<int> > vn;    //变长二维数组
+vector<vector<int>> vn; //变长二维数组
+
+vector<int> preorder({3,9,20,15,7});
+vector<int> inorder({9,3,15,20,7});
+
 
 int main(int argc, char const *argv[])
 {
@@ -50,9 +54,15 @@ int main(int argc, char const *argv[])
     it = vi.begin();    //取vi的首地址
     for (int i = 0; i < 5; i++)
     {
-        cout << it[i];
+        cout << it[i];//0,1,2,3,4
     }
-    
+
+    vi.insert(vi.begin(), 1);
+    vi.back();//获取最后一个元素
+    vi.front();//获取第一个元素
+    vi.pop_back();//删除最后一个元素
+    vi.erase(vi.begin());//删除第一个元素
+
     system("pause");
     return 0;
 }

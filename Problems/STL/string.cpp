@@ -3,9 +3,8 @@
 
 using namespace std;
 
-
 string str = "abcd";
-    /*
+/*
     1.访问
         1) 下标访问 
                 str[0];
@@ -33,12 +32,60 @@ string str = "abcd";
     
     9. str.replace(pos, len ,str2)
     */
-   
 
-int main(int argc, char const *argv[])
+// int main(int argc, char const *argv[])
+// {
+//     str.erase(str.begin()+2);
+//     cout << str;
+//     system("pause");
+//     return 0;
+// }
+
+int balancedStringSplit(string s)
 {
-    str.erase(str.begin()+2);
-    cout << str;
-    system("pause");
+    int len = s.size();
+
+    if (len >= 1)
+    {
+        int step = 0,
+            num = 0;
+        for (int i = 0; i < len; i++)
+        {
+           if (s[i] == 'R')
+           {
+               step++;
+           }
+           else
+           {
+               step--;
+           }
+           if (step == 0)
+           {
+               num++;
+           }
+           
+           
+        }
+        return num;
+    }
     return 0;
+}
+
+int main()
+{
+    string s1 = "RLRRLLRLRL";
+    string s = "We are happy.";
+    for (int i = 0; i < s.size(); i++)
+    {
+        if (s[i] == ' ')
+        {
+            s.replace(i,1,"%20");
+        }
+        
+        cout << s[i] <<"\n";
+    }
+    char a = s1[0];
+    cout << s;
+    cout << balancedStringSplit(s1)<< endl;
+    system("pause");
 }
